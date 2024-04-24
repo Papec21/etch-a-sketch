@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="etch-a-sketch.css">
+</head>
+<body>
+    <button onclick="changeGrid()">CHANGE GRID</button>
+
+    <div class="container"></div>
+
+    </div>
+
+
+    <script>
+        const container = document.querySelector(".container");
+        let grid = 16;
+
+        function changeGrid() {
+            grid = prompt("Please, select grid:");
+            container.innerHTML = "";
+            createGrid();
+        }
+
+        function createGrid() {
+            let gridNumber = 0;
+            let size = 960/grid;
+            gridNumber = grid * grid;
+
+            while (gridNumber > 0) {
+                gridNumber--;
+                const newGrid = document.createElement("div");
+                newGrid.style.width = `${size}px`;
+                newGrid.style.height = `${size}px`;
+                newGrid.classList.add("newGrid");
+                container.appendChild(newGrid);
+
+                newGrid.addEventListener("mouseover", event => {
+                    newGrid.style.backgroundColor = "black";
+                })
+            }
+        }
+
+        addEventListener("load", (event) => {
+            createGrid();
+        });
+
+    </script>
+</body>
+</html>
